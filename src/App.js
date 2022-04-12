@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import './App.css';
+import './css/spa.css';
+import './css/spa.shell.css';
 
 import ChatSlider from './components/ChatSlider'
 
@@ -21,7 +22,7 @@ const App = () => {
     };
   }
 
-  
+
   return (
     <div id='spa'>
       <ChatSlider height={sliderHeight} title={hoverTitle} handleClick={toggleSlider} />
