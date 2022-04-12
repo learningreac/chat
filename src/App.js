@@ -2,7 +2,11 @@ import { useState } from 'react';
 import './css/spa.css';
 import './css/spa.shell.css';
 
-import ChatSlider from './components/ChatSlider'
+import Head from './components/Head';
+import Main from './components/Main';
+import Footer from './components/Footer';
+import ChatSlider from './components/ChatSlider';
+import Modal from './components/Modal';
 
 import { configMap } from './constans';
 
@@ -12,7 +16,7 @@ const App = () => {
   const [hoverTitle, setHoverTitle] = useState(configMap.retracted_title);
 
   const toggleSlider = () => {
-    if(sliderHeight === configMap.retracted_height){
+    if (sliderHeight === configMap.retracted_height) {
       setSliderHeight(configMap.extended_height);
       setHoverTitle(configMap.extended_title);
 
@@ -25,7 +29,11 @@ const App = () => {
 
   return (
     <div id='spa'>
+      <Head />
+      <Main />
+      <Footer />
       <ChatSlider height={sliderHeight} title={hoverTitle} handleClick={toggleSlider} />
+      <Modal />
     </div>
   );
 }
