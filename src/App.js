@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
-function App() {
+import ChatSlider from './components/ChatSlider'
+
+import { configMap } from './constans';
+
+const App = () => {
+
+  const [sliderHeight, setSliderHeight] = useState(configMap.retracted_height)
+  const [hoverTitle, setHoverTitle] = useState(configMap.retracted_title);
+
+  const toggleSlider = () => {
+    if(sliderHeight === configMap.retracted_height){
+      setSliderHeight(configMap.extended_height);
+      setHoverTitle(configMap.extended_title);
+
+    } else if (sliderHeight === configMap.extended_height) {
+      setSliderHeight(configMap.retracted_height);
+      setHoverTitle(configMap.retracted_title);
+    };
+  }
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id='spa'>
+      <ChatSlider height={sliderHeight} title={hoverTitle} handleClick={toggleSlider} />
     </div>
   );
 }
