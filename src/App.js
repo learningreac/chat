@@ -8,23 +8,19 @@ import Footer from './components/Footer';
 import ChatSlider from './components/ChatSlider';
 import Modal from './components/Modal';
 
-import { configMap } from './constans';
+import { configMap } from './constants';
 
 const App = () => {
 
-  const [sliderHeight, setSliderHeight] = useState(configMap.retracted_height)
-  const [hoverTitle, setHoverTitle] = useState(configMap.retracted_title);
+  const [isChatRetracted, setIsChatRetracted] = useState(true);
+
+  console.log('after click', isChatRetracted)
 
   const toggleSlider = () => {
-    if (sliderHeight === configMap.retracted_height) {
-      setSliderHeight(configMap.extended_height);
-      setHoverTitle(configMap.extended_title);
-
-    } else if (sliderHeight === configMap.extended_height) {
-      setSliderHeight(configMap.retracted_height);
-      setHoverTitle(configMap.retracted_title);
-    };
-  }
+    isChatRetracted ?
+      setIsChatRetracted(false)
+      : setIsChatRetracted(true)
+  };
 
 
   return (
@@ -32,7 +28,7 @@ const App = () => {
       <Head />
       <Main />
       <Footer />
-      <ChatSlider height={sliderHeight} title={hoverTitle} handleClick={toggleSlider} />
+      <ChatSlider isRetracted={isChatRetracted} handleClick={toggleSlider} />
       <Modal />
     </div>
   );
