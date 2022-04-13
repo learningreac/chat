@@ -12,15 +12,16 @@ const getEmSize = function (elem) {
     );
 };
 
-const computeStateMap = (px_per_em) => {
-    if (px_per_em) {
-        let stateMap = {
-            position_type: 'closed',
-            slider_hidden_px: 0,
-            slider_closed_px: 0,
-            slider_opened_px: 0
-        };
-    }
+const computeStateMap = (px_per_em, configMap) => {
+    const stateMap = {
+        position_type: 'closed',
+        slider_hidden_px: 0,
+        slider_closed_px: configMap.slider_closed_em * px_per_em,
+        slider_opened_px: configMap.slider_opened_em * px_per_em,
+        sizer_opened_px: (configMap.slider_opened_em - 2) * px_per_em
+
+    };
+    return stateMap;
 }
 
 const ChatSlider = ({ isRetracted, height, title, handleClick }) => {
@@ -29,13 +30,16 @@ const ChatSlider = ({ isRetracted, height, title, handleClick }) => {
 
     useEffect(() => {
         const slider = sliderRef.current;
-        let ppe = getEmSize(slider);
-        Set_px_per_em(ppe);
+        Set_px_per_em(getEmSize(slider));
 
     }, []);
 
+    let stateMap;
+    if(px_per_em) {
+       stateMap = computeStateMap(px_per_em, configMap);
+    };
 
-    console.log(px_per_em)
+    console.log('statemap', stateMap);
 
 
     if (isRetracted) {
