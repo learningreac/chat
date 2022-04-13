@@ -1,9 +1,10 @@
 import ChatBox from "./ChatBox";
 import Msgs from "./Msgs";
 
-const Sizer = () => {
+const Sizer = ({sizerheight}) => {
+    console.log('sh',sizerheight)
     return (
-        <div className="spa-chat-sizer">
+        <div className="spa-chat-sizer" style={{height:sizerheight}}>
             <Msgs />
             <ChatBox />
         </div>
@@ -11,3 +12,4 @@ const Sizer = () => {
 };
 
 export default Sizer;
+

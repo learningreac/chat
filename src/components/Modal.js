@@ -1,6 +1,6 @@
 const Modal = () => {
     return (
-        <div className="spa-shell-modal"></div>
+        <div className="spa-shell-modal" style={{display:'none'}}></div>
     )
 };
 

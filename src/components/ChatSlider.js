@@ -1,7 +1,7 @@
 import { configMap } from "../constants";
 import ChatHeader from "./chat/ChatHeader";
 import ChatCloser from './chat/ChatCloser';
-import ChatBox from "./chat/ChatBox";
+import Sizer from './chat/Sizer';
 import { useEffect, useRef, useState } from "react";
 
 // window.getComputedStyle(element)
@@ -12,21 +12,11 @@ const getEmSize = function (elem) {
     );
 };
 
-const computeStateMap = (px_per_em, configMap) => {
-    const stateMap = {
-        position_type: 'closed',
-        slider_hidden_px: 0,
-        slider_closed_px: configMap.slider_closed_em * px_per_em,
-        slider_opened_px: configMap.slider_opened_em * px_per_em,
-        sizer_opened_px: (configMap.slider_opened_em - 2) * px_per_em
 
-    };
-    return stateMap;
-}
 
-const ChatSlider = ({ isRetracted, height, title, handleClick }) => {
+const ChatSlider = ({ isRetracted, handleClick }) => {
     const sliderRef = useRef();
-    const [px_per_em, Set_px_per_em] = useState(0);
+    const [px_per_em, Set_px_per_em] = useState(10);
 
     useEffect(() => {
         const slider = sliderRef.current;
@@ -34,27 +24,34 @@ const ChatSlider = ({ isRetracted, height, title, handleClick }) => {
 
     }, []);
 
-    let stateMap;
-    if(px_per_em) {
-       stateMap = computeStateMap(px_per_em, configMap);
+    let title, sliderheight, sizerheight;
+    let stateMap = {
+        position_type: 'closed',
+        slider_hidden_px: 0,
+        slider_closed_px: configMap.slider_closed_em * px_per_em,
+        slider_opened_px: configMap.slider_opened_em * px_per_em,
     };
+
 
     console.log('statemap', stateMap);
 
 
     if (isRetracted) {
-        title = configMap.retracted_title;
-        height = configMap.retracted_height;
+        title = configMap.slider_closed_title;
+        sliderheight = stateMap.slider_closed_px;
+        sizerheight = 0;
     } else {
-        title = configMap.extended_title;
-        height = configMap.extended_height;
+        title = configMap.slider_opened_title;
+        sliderheight = stateMap.slider_opened_px;
+        sizerheight = (configMap.slider_opened_em - 2) * px_per_em;
+        console.log('sizerheight', sizerheight);
     }
 
     return (
-        <div className="spa-chat" ref={sliderRef}>
-            <ChatHeader />
+        <div className="spa-chat" ref={sliderRef} style={{height:sliderheight}}>
+            <ChatHeader handleToggle = {handleClick}  title={title}/>
             <ChatCloser />
-            <ChatBox />
+            <Sizer sizerheight={sizerheight}/>
         </div>
     )
 };
@@ -62,3 +59,23 @@ const ChatSlider = ({ isRetracted, height, title, handleClick }) => {
 export default ChatSlider;
 
 //<div className='spa-shell-chat' title={title} style={{height:height}} onClick={handleClick}> 
+
+/**
+ * Layout
+ * + '<div class="spa-chat">'
+          + '<div class="spa-chat-head">'
+            + '<div class="spa-chat-head-toggle">+</div>'
+            + '<div class="spa-chat-head-title">'
+              + 'Chat'
+            + '</div>'
+          + '</div>'
+          + '<div class="spa-chat-closer">x</div>'
+          + '<div class="spa-chat-sizer">'
+            + '<div class="spa-chat-msgs"></div>'
+            + '<div class="spa-chat-box">'
+              + '<input type="text"/>'
+              + '<div>send</div>'
+            + '</div>'
+          + '</div>'
+        + '</div>',
+ */
