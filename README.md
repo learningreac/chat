@@ -1,4 +1,6 @@
-# Simple Chat App with React
+# SPA Chat App 
+Refered to Single Page Application(book);
+With React;
 
 ## Step1: Layout
 ![layout](public/imgs/Step1_Layout.png?raw=true "layout")

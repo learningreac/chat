@@ -1,6 +1,6 @@
 const ChatCloser = () => {
     return (
-        <div className="spa-chat-closer"></div>
+        <div className="spa-chat-closer"> x </div>
     )
 };
 
