@@ -24,27 +24,22 @@ const ChatSlider = ({ isRetracted, handleClick }) => {
 
     }, []);
 
-    let title, sliderheight, sizerheight;
+    let title, sliderheight;
     let stateMap = {
         position_type: 'closed',
         slider_hidden_px: 0,
         slider_closed_px: configMap.slider_closed_em * px_per_em,
         slider_opened_px: configMap.slider_opened_em * px_per_em,
     };
-
-
-    console.log('statemap', stateMap);
-
-
+    let sizerheight = (configMap.slider_opened_em - 2) * px_per_em;
+ 
     if (isRetracted) {
         title = configMap.slider_closed_title;
         sliderheight = stateMap.slider_closed_px;
-        sizerheight = 0;
     } else {
         title = configMap.slider_opened_title;
         sliderheight = stateMap.slider_opened_px;
-        sizerheight = (configMap.slider_opened_em - 2) * px_per_em;
-        console.log('sizerheight', sizerheight);
+       
     }
 
     return (

@@ -122,7 +122,7 @@
     background: #fff;
 }
 
-.spa-chat-box div {
+.spa-chat-box div {    /* chatbox children  div the send btn*/
     float: left;
     width: 25%;
     height: 2em;
