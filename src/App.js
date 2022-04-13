@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './css/spa.css';
 import './css/spa.shell.css';
+import './css/spa.chat.css';
 
 import Head from './components/Head';
 import Main from './components/Main';
@@ -8,7 +9,6 @@ import Footer from './components/Footer';
 import ChatSlider from './components/ChatSlider';
 import Modal from './components/Modal';
 
-import { configMap } from './constants';
 
 const App = () => {
 
