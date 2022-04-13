@@ -27,9 +27,9 @@ const App = () => {
     <div id='spa'>
       <Head />
       <Main />
-      <Footer />
       <ChatSlider isRetracted={isChatRetracted} handleClick={toggleSlider} />
       <Modal />
+      <Footer />
     </div>
   );
 }

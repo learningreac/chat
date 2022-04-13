@@ -24,7 +24,7 @@ const ChatSlider = ({ isRetracted, handleClick }) => {
 
     }, []);
 
-    let title, sliderheight;
+    let title, sliderheight, togglesign;
     let stateMap = {
         position_type: 'closed',
         slider_hidden_px: 0,
@@ -36,15 +36,17 @@ const ChatSlider = ({ isRetracted, handleClick }) => {
     if (isRetracted) {
         title = configMap.slider_closed_title;
         sliderheight = stateMap.slider_closed_px;
+        togglesign = '+';
     } else {
         title = configMap.slider_opened_title;
         sliderheight = stateMap.slider_opened_px;
+        togglesign = '-';
        
     }
 
     return (
         <div className="spa-chat" ref={sliderRef} style={{height:sliderheight}}>
-            <ChatHeader handleToggle = {handleClick}  title={title}/>
+            <ChatHeader handleToggle = {handleClick}  title={title} togglesign={togglesign}/>
             <ChatCloser />
             <Sizer sizerheight={sizerheight}/>
         </div>
