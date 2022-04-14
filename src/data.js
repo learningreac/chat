@@ -2,111 +2,91 @@ export let data= {
     "persons": [
         {
             "name": "Josh",
-            "id": 0,
+            "id": "56783",
             "friends": [
                 {
                     "name": "Betty",
-                    "id": 1
+                    "id": "89657"
                 },
                 {
                     "name": "Mike",
-                    "id": 2
+                    "id": "12458"
                 },
                 {
                     "name": "Pebbles",
-                    "id": 3
+                    "id": "66531"
                 },
                 {
                     "name": "Wilma",
-                    "id": 4
+                    "id": "74963"
                 }
             ],
             "is_online": true
         },
         {
             "name": "Betty",
-            "id": 1,
-            "css_map": {
-                "top": 20,
-                "left": 20,
-                "background-color": "rgb( 128,128,128)"
-            },
+            "id": "89657",
             "friends": [
                 {
                     "name": "Josh",
-                    "id": 0
+                    "id": "56783",
                 },
                 {
                     "name": "Mike",
-                    "id": 2
+                    "id": "12458"
                 },
                 {
                     "name": "Pebbles",
-                    "id": 3
+                    "id": "66531"
                 }
             ],
             "is_online": true
         },
         {
             "name": "Mike",
-            "id": 2,
-            "css_map": {
-                "top": 60,
-                "left": 20,
-                "background-color": "rgb( 128,255,128)"
-            },
+            "id": "12458",
             "friends": [
                 {
                     "name": "Josh",
-                    "id": 0
+                    "id": "56783",
                 },
                 {
                     "name": "Betty",
-                    "id": 1
+                    "id": "89657"
                 }
             ],
             "is_online": true
         },
         {
             "name": "Pebbles",
-            "id": 3,
-            "css_map": {
-                "top": 100,
-                "left": 20,
-                "background-color": "rgb( 128,192,192)"
-            },
+            "id": "66531",
             "friends": [
                 {
                     "name": "Josh",
-                    "id": 0
+                    "id": "56783",
                 },
                 {
                     "name": "Betty",
-                    "id": 1
+                    "id": "89657"
                 },
                 {
                     "name": "Wilma",
-                    "id": 4
+                    "id": "74963"
                 }
             ],
             "is_online": false
         },
         {
             "name": "Wilma",
-            "id": 4,
-            "css_map": {
-                "top": 140,
-                "left": 20,
-                "background-color": "rgb( 192,128,128)"
-            },
+            "id": "74963",
             "friends": [
                 {
                     "name": "Josh",
-                    "id": 0
+                    "id": "56783",
                 },
                 {
                     "name": "Pebbles",
-                    "id": 3
+                    "id": "66531"
                 }
             ],
             "is_online": false
