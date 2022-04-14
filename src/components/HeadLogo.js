@@ -1,6 +1,8 @@
 const HeadLogo = () => {
     return (
-        <div className="spa-shell-head-logo"></div>
+        <div className="spa-shell-head-logo">
+            <h1>Chat Room</h1>
+        </div>
     )
 };
 

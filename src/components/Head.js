@@ -1,17 +1,20 @@
 import HeadLogo from "./HeadLogo";
 import HeadAcct from "./HeadAcct";
-import Search from "./HeadSearch";
 
 
-const Head = () => {
+
+const Head = ({login_user}) => {
 
     return (
         <div className="spa-shell-head">
             <HeadLogo />
-            <HeadAcct />
-            <Search />
+            <HeadAcct login_user={login_user}/>
+           
         </div>
     )
 };
 
 export default Head;
+
+//import Search from "./HeadSearch";
+// <Search />

@@ -13,6 +13,9 @@ import Modal from './components/Modal';
 const App = () => {
 
   const [isChatRetracted, setIsChatRetracted] = useState(true);
+  const [login_user, setLogin_user] = useState('Josh');
+  const [chatList, setChatList] = useState(null);
+  const [messages, setMessages]= useState(null);
 
   console.log('after click', isChatRetracted)
 
@@ -25,7 +28,7 @@ const App = () => {
 
   return (
     <div id='spa'>
-      <Head />
+      <Head login_user={login_user}/>
       <Main />
       <ChatSlider isRetracted={isChatRetracted} handleClick={toggleSlider} />
       <Modal />
