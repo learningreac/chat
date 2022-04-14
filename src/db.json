@@ -1,49 +1,79 @@
 {
     "persons": [
         {
+            "name": "Josh",
+            "id": 0,
+            "friends":["Betty", "Mike", "Pebbles", "Wilma"],
+            "is_online":true
+        },
+        {
             "name": "Betty",
-            "id": "id_01",
+            "id": 1,
             "css_map": {
                 "top": 20,
                 "left": 20,
                 "background-color": "rgb( 128,128,128)"
-            }
+            },
+            "friends":["Josh","Mike","Pebbles"],
+            "is_online":true
         },
         {
             "name": "Mike",
-            "id": "id_02",
+            "id": 2,
             "css_map": {
                 "top": 60,
                 "left": 20,
                 "background-color": "rgb( 128,255,128)"
-            }
+            },
+            "friends":["Josh","Betty"],
+            "is_online":true
         },
         {
             "name": "Pebbles",
-            "id": "id_03",
+            "id": 3,
             "css_map": {
                 "top": 100,
                 "left": 20,
                 "background-color": "rgb( 128,192,192)"
-            }
+            },
+            "friends":["Josh","Betty","Wilma"],
+            "is_online":false
         },
         {
             "name": "Wilma",
-            "id": "id_04",
+            "id": 4,
             "css_map": {
                 "top": 140,
                 "left": 20,
                 "background-color": "rgb( 192,128,128)"
-            }
+            },
+            "friends":["Josh","Pebbles"],
+            "is_online":false
         }
     ],
     "messages": [
         {
-            "content": "hello",
-            "mID": 1,
-            "createdBy": "Mike",
-            "sentTo": "Betty",
-            "time": ""
+            "msgID": 5111,
+            "content": "hello Betty",
+            "creatorID": 0,
+            "recipientID": 1,
+            "timestamp": "2017/04/12*19:37:50"
+        },
+
+        {
+            "msgID": 5112,
+            "content": "Hello!",
+            "creatorID": 1,
+            "recipientID": 0,
+            "timestamp": "2017/04/12*19:37:50"
+        },
+
+        {
+            "msgID": 5113,
+            "content": "Have a great day!",
+            "creatorID": 0,
+            "recipientID": 3,
+            "timestamp": "2017/04/12*19:37:50"
         }
     ]
 }

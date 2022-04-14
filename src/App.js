@@ -7,14 +7,13 @@ import Head from './components/Head';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import ChatSlider from './components/ChatSlider';
-import Modal from './components/Modal';
 
 
 const App = () => {
 
   const [isChatRetracted, setIsChatRetracted] = useState(true);
   const [login_user, setLogin_user] = useState('Josh');
-  const [chatList, setChatList] = useState(null);
+  const [chatee, setChatee] = useState(null);
   const [messages, setMessages]= useState(null);
 
   console.log('after click', isChatRetracted)
@@ -31,7 +30,6 @@ const App = () => {
       <Head login_user={login_user}/>
       <Main />
       <ChatSlider isRetracted={isChatRetracted} handleClick={toggleSlider} />
-      <Modal />
       <Footer />
     </div>
   );
