@@ -1,4 +1,4 @@
-{
+export let data= {
     "persons": [
         {
             "name": "Josh",
@@ -135,4 +135,5 @@
             "timestamp": "2017/04/12*19:37:50"
         }
     ]
-}
+};
+

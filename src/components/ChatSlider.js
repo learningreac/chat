@@ -14,7 +14,7 @@ const getEmSize = function (elem) {
 
 
 
-const ChatSlider = ({ isRetracted, handleClick }) => {
+const ChatSlider = ({ isRetracted, handleClick,friendslist }) => {
     const sliderRef = useRef();
     const [px_per_em, Set_px_per_em] = useState(10);
 
@@ -48,7 +48,7 @@ const ChatSlider = ({ isRetracted, handleClick }) => {
         <div className="spa-chat" ref={sliderRef} style={{height:sliderheight}}>
             <ChatHeader handleToggle = {handleClick}  title={title} togglesign={togglesign}/>
             <ChatCloser />
-            <Sizer sizerheight={sizerheight}/>
+            <Sizer sizerheight={sizerheight} friendslist={friendslist}/>
         </div>
     )
 };

@@ -1,11 +1,11 @@
 import Msgs from "./Msgs";
 import ChatList from "./ChatList";
 
-const Sizer = ({sizerheight}) => {
+const Sizer = ({sizerheight, friendslist}) => {
     console.log('sh',sizerheight)
     return (
         <div className="spa-chat-sizer" style={{height:sizerheight}}>
-            <ChatList />
+            <ChatList friendslist={friendslist}/>
             <Msgs />
         </div>
     )
