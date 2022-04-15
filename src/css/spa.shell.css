@@ -89,11 +89,13 @@
   top           : 50%;
   left          : 50%;
   width         : 400px;
-  height        : 400px;
+  /*height        : 400px; */
   background    : #fff;
   border-radius : 3px;
   z-index       : 2;
 };
+
+
 
 /*
 .spa-shell-head-search {

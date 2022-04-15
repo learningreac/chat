@@ -15,8 +15,9 @@ const App = () => {
 
   const [isChatRetracted, setIsChatRetracted] = useState(true);
   const [login_user, setLogin_user] = useState('Josh'); //name
+  const [messages, setMessages] = useState(); // initial messages
   const [chatee, setChatee] = useState({ name: null, id: null }); // name
- // const [messages, setMessages] = useState();
+ 
   let login_user_data = data.persons.find(p => p.name === login_user);
   const userID = login_user_data.id;
   let friendslist = login_user_data.friends;
@@ -54,7 +55,7 @@ const App = () => {
     <div id='spa'>
       <Head login_user={login_user} />
       <Main />
-      <Modal />
+      <Modal setUser={setLogin_user}/>
       <ChatSlider isRetracted={isChatRetracted}
         handleToggle={toggleSlider}
         friendslist={friendslist}

@@ -1,9 +1,9 @@
 import SignInForm from "./SignInForm";
 
-const Modal = () => {
+const Modal = ({setUser}) => {
     return (
         <div className="spa-shell-modal" >
-            <SignInForm />
+            <SignInForm setUser={setUser}/>
         </div>
     )
 };
