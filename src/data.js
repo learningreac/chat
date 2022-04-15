@@ -94,26 +94,40 @@ export let data= {
     ],
     "messages": [
         {
-            "msgID": 5111,
+            "msgID": "ADSFG",
             "content": "hello Betty",
-            "creatorID": 0,
-            "recipientID": 1,
+            "creatorID": "56783",
+            "recipientID": "89657",
             "timestamp": "2017/04/12*19:37:50"
         },
         {
-            "msgID": 5112,
+            "msgID": "JHBGY",
             "content": "Hello!",
-            "creatorID": 1,
-            "recipientID": 0,
+            "creatorID": "89657",
+            "recipientID": "56783",
             "timestamp": "2017/04/12*19:37:50"
         },
         {
-            "msgID": 5113,
+            "msgID": "GFHJN",
             "content": "Have a great day!",
-            "creatorID": 0,
-            "recipientID": 3,
+            "creatorID": "56783",
+            "recipientID": "89657",
             "timestamp": "2017/04/12*19:37:50"
-        }
+        },
+        {
+            "msgID": "BFCGV",
+            "content": "You too!",
+            "creatorID": "89657",
+            "recipientID": "56783",
+            "timestamp": "2017/04/12*19:37:50"
+        },
+        {
+            "msgID": "FCVGH",
+            "content": "Are you there?",
+            "creatorID": "56783",
+            "recipientID": "12458",
+            "timestamp": "2017/04/12*19:37:50"
+        },
     ]
 };
 

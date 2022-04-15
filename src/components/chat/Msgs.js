@@ -4,7 +4,8 @@ const Msgs = ({chatee}) => {
     return (
         <div className="spa-chat-msg">
             <div className="spa-chat-msg-log">
-               { chatee && <p>{`Now chat with ${chatee}`}</p>}
+               { chatee.name && <p>{`Now chat with ${chatee.name}`}</p>}
+               <p>test lines</p>
             </div>
             <ChatBox />
         </div>
