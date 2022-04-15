@@ -1,11 +1,11 @@
 import ChatBox from "./ChatBox";
 
-const Msgs = ({chatee}) => {
+const Msgs = ({ chatee, msgs }) => {
     return (
         <div className="spa-chat-msg">
             <div className="spa-chat-msg-log">
-               { chatee.name && <p>{`Now chat with ${chatee.name}`}</p>}
-               <p>test lines</p>
+                {chatee.name && <p>{`Now chat with ${chatee.name}`}</p>}
+                {msgs && msgs.map(obj => <p key={obj.msgID}>{obj.content}</p>)}
             </div>
             <ChatBox />
         </div>

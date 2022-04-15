@@ -16,12 +16,13 @@ const App = () => {
   const [isChatRetracted, setIsChatRetracted] = useState(true);
   const [login_user, setLogin_user] = useState('Josh'); //name
   const [chatee, setChatee] = useState({ name: null, id: null }); // name
-  const [messages, setMessages] = useState(null);
+ // const [messages, setMessages] = useState();
   let login_user_data = data.persons.find(p => p.name === login_user);
   const userID = login_user_data.id;
   let friendslist = login_user_data.friends;
-  if(chatee.id) {
-    let msgsBtwnUsers = filtAndSortMsgs(data.messages,userID,chatee.id);
+  let msgsBtwnUsers;
+  if(userID && chatee.id) {
+    msgsBtwnUsers = filtAndSortMsgs(data.messages,userID,chatee.id);
     console.log('msgsbtwn', msgsBtwnUsers);
     //setMessages(msgsBtwnUsers);
   };
@@ -58,6 +59,7 @@ const App = () => {
         friendslist={friendslist}
         setChatee={setChatee}
         chatee={chatee}
+        msgs={msgsBtwnUsers}
       />
       <Footer />
     </div>
