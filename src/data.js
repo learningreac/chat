@@ -98,35 +98,35 @@ export let data= {
             "content": "hello Betty",
             "creatorID": "56783",
             "recipientID": "89657",
-            "timestamp": "2017/04/12*19:37:50"
+            "timestamp": "Thu Apr 14 2022 21:55:15 GMT-0700"
         },
         {
             "msgID": "JHBGY",
             "content": "Hello!",
             "creatorID": "89657",
             "recipientID": "56783",
-            "timestamp": "2017/04/12*19:37:50"
+            "timestamp": "Thu Apr 14 2022 21:45:15 GMT-0700"
         },
         {
             "msgID": "GFHJN",
             "content": "Have a great day!",
             "creatorID": "56783",
             "recipientID": "89657",
-            "timestamp": "2017/04/12*19:37:50"
+            "timestamp": "Thu Apr 14 2022 21:56:15 GMT-0700"
         },
         {
             "msgID": "BFCGV",
             "content": "You too!",
             "creatorID": "89657",
             "recipientID": "56783",
-            "timestamp": "2017/04/12*19:37:50"
+            "timestamp": "Thu Apr 14 2022 21:57:15 GMT-0700"
         },
         {
             "msgID": "FCVGH",
             "content": "Are you there?",
             "creatorID": "56783",
             "recipientID": "12458",
-            "timestamp": "2017/04/12*19:37:50"
+            "timestamp": "Thu Apr 14 2022 21:53:15 GMT-0700"
         },
     ]
 };

@@ -15,16 +15,26 @@ const App = () => {
 
   const [isChatRetracted, setIsChatRetracted] = useState(true);
   const [login_user, setLogin_user] = useState('Josh'); //name
-  const [chatee, setChatee] = useState({name:null, id:null}); // name
+  const [chatee, setChatee] = useState({ name: null, id: null }); // name
   const [messages, setMessages] = useState(null);
   let login_user_data = data.persons.find(p => p.name === login_user);
-  const userId = login_user_data.id;
+  const userID = login_user_data.id;
   let friendslist = login_user_data.friends;
 
   //let allMsgs = data.messages.map(msg => msg.creatorID === userId)
   //console.log('allmsgs', allMsgs);
 
- // function filteMsgs (login_user, chatee)
+  function filtAndSortMsgs(objArr, userID, chateeID) {
+    const result = [];
+    objArr.map(msg => {
+      if (msg.creatorID === userID && msg.recipientID === chateeID) {
+          result.push(msg);
+      } else if(msg.creatorID === chateeID && msg.recipientID === userID) {
+        result.push(msg);
+      }
+    });
+    result.sort((x,y) => Date.parse(x.timestamp) - Date.parse(y.timestamp));
+  };
 
 
   const toggleSlider = () => {
