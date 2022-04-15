@@ -2,9 +2,10 @@ const ChatBox = () => {
     return (
         <div className="spa-chat-msg-in">
             <form className="spa-chat-msg-form">
-                <input type='text'></input>
-                <input type='submit' style={{ display: 'none' }}></input>
-                <div className="spa-chat-msg-send">send</div>
+                <input type='text' name="newMsg"></input>
+               
+             
+                <button type="submit" className="spa-chat-msg-send">send</button>
             </form>
 
         </div>
@@ -12,3 +13,6 @@ const ChatBox = () => {
 };
 
 export default ChatBox;
+
+// <input type='submit' style={{ display: 'none' }}></input>
+//   <div className="spa-chat-msg-send">send</div>
