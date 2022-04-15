@@ -20,9 +20,12 @@ const App = () => {
   let login_user_data = data.persons.find(p => p.name === login_user);
   const userID = login_user_data.id;
   let friendslist = login_user_data.friends;
+  if(chatee.id) {
+    let msgsBtwnUsers = filtAndSortMsgs(data.messages,userID,chatee.id);
+    console.log('msgsbtwn', msgsBtwnUsers);
+    //setMessages(msgsBtwnUsers);
+  };
 
-  //let allMsgs = data.messages.map(msg => msg.creatorID === userId)
-  //console.log('allmsgs', allMsgs);
 
   function filtAndSortMsgs(objArr, userID, chateeID) {
     const result = [];
@@ -34,6 +37,7 @@ const App = () => {
       }
     });
     result.sort((x,y) => Date.parse(x.timestamp) - Date.parse(y.timestamp));
+    return result;
   };
 
 
