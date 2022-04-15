@@ -8,7 +8,7 @@ import Head from './components/Head';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import ChatSlider from './components/ChatSlider';
-
+import Modal from './components/Modal';
 
 
 const App = () => {
@@ -54,6 +54,7 @@ const App = () => {
     <div id='spa'>
       <Head login_user={login_user} />
       <Main />
+      <Modal />
       <ChatSlider isRetracted={isChatRetracted}
         handleToggle={toggleSlider}
         friendslist={friendslist}
