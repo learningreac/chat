@@ -1,9 +1,9 @@
 import SignInForm from "./SignInForm";
 
-const Modal = ({setUser}) => {
+const Modal = ({is_Login,set_Is_Longin,set_User}) => {
     return (
         <div className="spa-shell-modal" >
-            <SignInForm setUser={setUser}/>
+            <SignInForm is_Login={is_Login} set_Is_Longin={set_Is_Longin} set_User={set_User}/>
         </div>
     )
 };

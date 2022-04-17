@@ -16,7 +16,7 @@ const personsUrl = "http://localhost:3001/persons";
 const messagesUrl = " http://localhost:3001/messages";
 
 const App = () => {
-
+  const [islogin, setIsLongin] = useState(false);
   const [isChatRetracted, setIsChatRetracted] = useState(true); // chatbox
   const [loginUser, setLoginUser] = useState('Josh'); //user input username
   const [allLoginUserMsgs, setAllMsgs] = useState(null); // initial messages all msg from login user
@@ -119,7 +119,7 @@ const App = () => {
     <div id='spa'>
       <Head login_user={loginUser} />
       <Main />
-      <Modal setUser={setLoginUser} />
+      <Modal is_Login={islogin} set_Is_Longin={setIsLongin} set_User={setLoginUser} />
       <ChatSlider isRetracted={isChatRetracted}
         handleToggle={toggleSlider}
         friendslist={friendslist}

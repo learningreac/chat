@@ -6,10 +6,10 @@ import '../css/spa.login.css';
  * @returns 
  */
 
- const Notification = ({ isSubmitted, setIsSubmitted }) => {
-    if (isSubmitted === false) return null;
+const Notification = ({ islogin, setIsLongin }) => {
+    if (islogin === false) return null;
     setTimeout(() => {
-        setIsSubmitted(false);
+        setIsLongin(false);//////
     }, 5000)
     return (
         <div>User is successfully logged in</div>
@@ -18,19 +18,18 @@ import '../css/spa.login.css';
 
 
 
-const RenderForm = ({handleSubmit}) => {
+const RenderForm = ({ handleSubmit }) => {
     return (
         <div>
-        <form onSubmit={handleSubmit}>
-            <label>Name:</label>
-            <input name="user_input" />
-            <button type="submit">Sign In</button>
-        </form>
-    </div>
+            <form onSubmit={handleSubmit}>
+                <label>Name:</label>
+                <input name="user_input" />
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
     )
 }
-const SignInForm = ({ setUser }) => {
-    const [isSubmitted, setIsSubmitted] = useState(false);
+const SignInForm = ({ is_Login, set_Is_Longin, set_User }) => {
 
     const handleSubmit = (event) => {
         //Prevent page reload
@@ -38,20 +37,22 @@ const SignInForm = ({ setUser }) => {
 
         const user_input_name = event.target.user_input.value;
         event.target.user_input.value = "";
-        setUser(user_input_name);
-        setIsSubmitted(true);
+        set_User(user_input_name);
+        set_Is_Longin(true);
     };
 
-  
-       
+
+    if (is_Login === true) return null;
 
     return (
         <div className="login-form">
             <div className="title">Sign In</div>
-            <Notification isSubmitted={isSubmitted} />
-            <RenderForm handleSubmit={handleSubmit}/>
+
+            <RenderForm handleSubmit={handleSubmit} />
         </div>
     )
 };
 
 export default SignInForm;
+
+//<Notification islogin={islogin} setIsLongin = {setIsSubmitted} />
