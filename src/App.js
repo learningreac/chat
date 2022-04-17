@@ -30,10 +30,12 @@ const App = () => {
     console.log('effect');
     axios
       .get(messagesUrl)
-      .then(response => setAllMsgs(response.data));
+     // .then(response => setAllMsgs(response.data));
+     .then (response => findUserMsgs(response.data, userID))
+     .then (result => console.log('filtedmsg', result))
 
 
-  },[]);
+  },[login_user]);
 
   console.log('msgafterEffect', allMsgs);
 
@@ -44,6 +46,11 @@ const App = () => {
     //setMessages(msgsBtwnUsers);
   };
 
+function findUserMsgs(objArr, userID) {
+  const result = objArr.filter(msg => msg.creatorID===userID || msg.recipientID === userID);
+  return result;
+
+}
 
   function filtAndSortMsgs(objArr, userID, chateeID) {
     const result = [];
