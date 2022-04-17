@@ -17,7 +17,7 @@ const messagesUrl = " http://localhost:3001/messages";
 
 const App = () => {
   const [islogin, setIsLongin] = useState(false);
-  const [isChatRetracted, setIsChatRetracted] = useState(true); // chatbox
+  const [isChatRetracted, setIsChatRetracted] = useState(false); // chatbox
   const [loginUser, setLoginUser] = useState('Josh'); //user input username
   const [allLoginUserMsgs, setAllMsgs] = useState(null); // initial messages all msg from login user
 
@@ -104,13 +104,20 @@ const App = () => {
       : setIsChatRetracted(true)
   };
 
-  const handleSendMsg = (newMsg) => {
+  const createNewMsg = (newMsgobj) => {
     //console.log('sendbtnclicked', allLoginUserMsgs);
-    newMsg.creatorID = userData.id;
-    newMsg.creatorName = userData.name;
-    newMsg.recipientID = chatee.id;
-    newMsg.recipientName = chatee.name;
-    setAllMsgs([...allLoginUserMsgs, newMsg])
+    newMsgobj.creatorID = userData.id;
+    newMsgobj.creatorName = userData.name;
+    newMsgobj.recipientID = chatee.id;
+    newMsgobj.recipientName = chatee.name;
+
+    axios
+      .post(messagesUrl,newMsgobj)
+      .then(response => {
+        setAllMsgs(allLoginUserMsgs.concat(response.data))
+       // console.log('post',response)
+      })
+    //setAllMsgs([...allLoginUserMsgs, newMsgobj])
   };
 
 
@@ -126,7 +133,7 @@ const App = () => {
         setChatee={setChatee}
         chatee={chatee}
         msgs={msgsBtwnUsers}
-        handleSend={handleSendMsg}
+        handleSend={createNewMsg}
       />}
       <Footer />
     </div>
