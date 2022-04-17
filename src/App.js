@@ -18,55 +18,77 @@ const messagesUrl = " http://localhost:3001/messages";
 const App = () => {
 
   const [isChatRetracted, setIsChatRetracted] = useState(true); // chatbox
-  const [login_user, setLogin_user] = useState('Josh'); //name
-  const [allMsgs, setAllMsgs] = useState(null); // initial messages all msg from login user
+  const [loginUser, setLoginUser] = useState('Josh'); //name
+  const [allLoginUserMsgs, setAllMsgs] = useState(null); // initial messages all msg from login user
+
+  const [userData, setUserDate] = useState(null);
+
   const [chatee, setChatee] = useState({ name: null, id: null }); // name
- 
-  let login_user_data = data.persons.find(p => p.name === login_user);
+
+  const login_user_data = data.persons.find(p => p.name === loginUser);
   const userID = login_user_data.id;
   let friendslist = login_user_data.friends;
 
   useEffect(() => {
-    console.log('effect');
+    //console.log('msgeffect');
     axios
       .get(messagesUrl)
-     // .then(response => setAllMsgs(response.data));
-     .then (response => findUserMsgs(response.data, userID))
-     .then (result => console.log('filtedmsg', result))
+      // .then(response => setAllMsgs(response.data));
+      .then(response => findUserMsgs(response.data, userID))
+      .then(result => setAllMsgs(result))
 
+  }, [loginUser]);
 
-  },[login_user]);
+  useEffect(() => {
+    console.log('personeffect');
+    axios
+      .get(personsUrl)
+      .then(response => findUserdata(response.data, loginUser))
+      .then(result => setUserDate(result));
 
-  console.log('msgafterEffect', allMsgs);
+  }, [loginUser]); // render if loginUser changes
+
+  console.log('finduseraftereffect', userData)
+
+  function findUserdata (objArr, user_name) {
+    console.log('user_name', user_name)
+    const user_data = objArr.find(p => p.name === user_name)
+    return user_data;
+
+  };
+
+  //setUserDate(response.data.find(p => p.name === loginUser))
+  //console.log('affeffect msgs', allLoginUserMsgs);
+  // .then(result =>)
 
   let msgsBtwnUsers;
-  if(userID && chatee.id) {
-    msgsBtwnUsers = filtAndSortMsgs(data.messages,userID,chatee.id);
+  if (userID && chatee.id) {
+    msgsBtwnUsers = filtAndSortMsgs(data.messages, userID, chatee.id);
     console.log('msgsbtwn', msgsBtwnUsers);
     //setMessages(msgsBtwnUsers);
   };
 
-function findUserMsgs(objArr, userID) {
-  const result = objArr.filter(msg => msg.creatorID===userID || msg.recipientID === userID);
-  return result;
+  function findUserMsgs(objArr, userID) {
+    const result = objArr.filter(msg => msg.creatorID === userID || msg.recipientID === userID);
+    return result;
 
-}
+  }
 
   function filtAndSortMsgs(objArr, userID, chateeID) {
     const result = [];
     objArr.map(msg => {
       if (msg.creatorID === userID && msg.recipientID === chateeID) {
-          return result.push(msg);
-      } else if(msg.creatorID === chateeID && msg.recipientID === userID) {
+        return result.push(msg);
+      } else if (msg.creatorID === chateeID && msg.recipientID === userID) {
         result.push(msg);
       }
     });
-    result.sort((x,y) => Date.parse(x.timestamp) - Date.parse(y.timestamp));
+    result.sort((x, y) => Date.parse(x.timestamp) - Date.parse(y.timestamp));
     return result;
   };
 
 
-// Event handlers
+  // Event handlers
 
   const toggleSlider = () => {
     isChatRetracted ?
@@ -75,19 +97,19 @@ function findUserMsgs(objArr, userID) {
   };
 
   const handleSendMsg = (newMsg) => {
-    console.log('sendbtnclicked', allMsgs);
+    console.log('sendbtnclicked', allLoginUserMsgs);
     newMsg.creatorID = userID;
     newMsg.recipientID = chatee.id;
-    setAllMsgs([...allMsgs, newMsg])
+    setAllMsgs([...allLoginUserMsgs, newMsg])
   };
 
 
 
   return (
     <div id='spa'>
-      <Head login_user={login_user} />
+      <Head login_user={loginUser} />
       <Main />
-      <Modal setUser={setLogin_user}/>
+      <Modal setUser={setLoginUser} />
       <ChatSlider isRetracted={isChatRetracted}
         handleToggle={toggleSlider}
         friendslist={friendslist}
