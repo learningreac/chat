@@ -22,51 +22,55 @@ const App = () => {
   const [allLoginUserMsgs, setAllMsgs] = useState(null); // initial messages all msg from login user
 
   const [userData, setUserDate] = useState(null);
-
+  const [friends, setFriends] = useState(null);
   const [chatee, setChatee] = useState({ name: null, id: null }); // name
 
-  const login_user_data = data.persons.find(p => p.name === loginUser);
-  const userID = login_user_data.id;
-  let friendslist = login_user_data.friends;
 
   useEffect(() => {
-    //console.log('msgeffect');
+    //console.log('personeffect');
+    axios
+      .get(personsUrl)
+      .then(response => findUserdata(response.data, loginUser))
+      .then(result => {
+        setUserDate(result);
+        setFriends(result.friends);
+        setChatee(result.friends[0]);
+      });
+
+  }, [loginUser]); // render if loginUser changes
+
+ 
+
+  useEffect(() => {
+    console.log('msgeffect',userData);
+
     axios
       .get(messagesUrl)
       // .then(response => setAllMsgs(response.data));
-      .then(response => findUserMsgs(response.data, userID))
+      .then(response => findUserMsgs(response.data, userData.id))
       .then(result => setAllMsgs(result))
 
   }, [loginUser]);
 
-  useEffect(() => {
-    console.log('personeffect');
-    axios
-      .get(personsUrl)
-      .then(response => findUserdata(response.data, loginUser))
-      .then(result => setUserDate(result));
+ // console.log('aftereffect', userData, 'msg',allLoginUserMsgs, 'chatee', chatee, 'f',friends)
+  
 
-  }, [loginUser]); // render if loginUser changes
-
-  console.log('finduseraftereffect', userData)
-
-  function findUserdata (objArr, user_name) {
+  function findUserdata(objArr, user_name) {
     console.log('user_name', user_name)
     const user_data = objArr.find(p => p.name === user_name)
     return user_data;
-
   };
 
-  //setUserDate(response.data.find(p => p.name === loginUser))
-  //console.log('affeffect msgs', allLoginUserMsgs);
-  // .then(result =>)
 
+
+  const login_user_data = data.persons.find(p => p.name === loginUser);
+  const userid = login_user_data.id;
+  let friendslist = login_user_data.friends;
   let msgsBtwnUsers;
-  if (userID && chatee.id) {
-    msgsBtwnUsers = filtAndSortMsgs(data.messages, userID, chatee.id);
-    console.log('msgsbtwn', msgsBtwnUsers);
-    //setMessages(msgsBtwnUsers);
-  };
+  if (userid && chatee.id) {
+    msgsBtwnUsers = filtAndSortMsgs(data.messages, userData.id, chatee.id);
+  }
+
 
   function findUserMsgs(objArr, userID) {
     const result = objArr.filter(msg => msg.creatorID === userID || msg.recipientID === userID);
@@ -97,8 +101,8 @@ const App = () => {
   };
 
   const handleSendMsg = (newMsg) => {
-    console.log('sendbtnclicked', allLoginUserMsgs);
-    newMsg.creatorID = userID;
+    //console.log('sendbtnclicked', allLoginUserMsgs);
+    newMsg.creatorID = userData.id;
     newMsg.recipientID = chatee.id;
     setAllMsgs([...allLoginUserMsgs, newMsg])
   };

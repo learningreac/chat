@@ -15,6 +15,9 @@ const getEmSize = function (elem) {
 
 
 const ChatSlider = ({ isRetracted, handleToggle, friendslist,setChatee,chatee,msgs,handleSend }) => {
+
+  console.log('friendspassed', friendslist);
+
   const sliderRef = useRef();
   const [px_per_em, Set_px_per_em] = useState(10);
 
