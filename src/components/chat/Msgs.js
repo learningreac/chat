@@ -1,6 +1,6 @@
 import ChatBox from "./ChatBox";
 
-const Msgs = ({ chatee, msgs, userID }) => {
+const Msgs = ({ chatee, msgs, handleSend}) => {
     let msgsToShow;
     return (
         <div className="spa-chat-msg">
@@ -8,7 +8,7 @@ const Msgs = ({ chatee, msgs, userID }) => {
                 {chatee.name && <p>{`Now chat with ${chatee.name}`}</p>}
                 {msgs && msgs.map(obj => <p key={obj.msgID}>{obj.content}</p>)}
             </div>
-            <ChatBox />
+            <ChatBox handleSend={handleSend}/>
         </div>
     )
 };

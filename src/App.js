@@ -19,7 +19,7 @@ const App = () => {
 
   const [isChatRetracted, setIsChatRetracted] = useState(true); // chatbox
   const [login_user, setLogin_user] = useState('Josh'); //name
-  const [messages, setMessages] = useState(null); // initial messages all msg from login user
+  const [allMsgs, setAllMsgs] = useState(null); // initial messages all msg from login user
   const [chatee, setChatee] = useState({ name: null, id: null }); // name
  
   let login_user_data = data.persons.find(p => p.name === login_user);
@@ -30,12 +30,12 @@ const App = () => {
     console.log('effect');
     axios
       .get(messagesUrl)
-      .then(response => setMessages(response.data));
+      .then(response => setAllMsgs(response.data));
 
-      
+
   },[]);
 
-  console.log('msgafterEffect', messages);
+  console.log('msgafterEffect', allMsgs);
 
   let msgsBtwnUsers;
   if(userID && chatee.id) {
@@ -59,10 +59,19 @@ const App = () => {
   };
 
 
+// Event handlers
+
   const toggleSlider = () => {
     isChatRetracted ?
       setIsChatRetracted(false)
       : setIsChatRetracted(true)
+  };
+
+  const handleSendMsg = (newMsg) => {
+    console.log('sendbtnclicked', allMsgs);
+    newMsg.creatorID = userID;
+    newMsg.recipientID = chatee.id;
+    setAllMsgs([...allMsgs, newMsg])
   };
 
 
@@ -78,7 +87,7 @@ const App = () => {
         setChatee={setChatee}
         chatee={chatee}
         msgs={msgsBtwnUsers}
-        userID={userID}
+        handleSend={handleSendMsg}
       />
       <Footer />
     </div>
