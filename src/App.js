@@ -27,8 +27,8 @@ const App = () => {
 
 
   useEffect(() => {
-   // console.log('personeffect');
-   
+    // console.log('personeffect');
+
     axios
       .get(personsUrl)
       .then(response => findUserdata(response.data, loginUser))
@@ -40,24 +40,24 @@ const App = () => {
 
   }, [loginUser]); // render if loginUser changes
 
- 
+
 
   useEffect(() => {
-   // console.log('msgeffect',loginUser);
+    // console.log('msgeffect',loginUser);
 
     axios
       .get(messagesUrl)
       // .then(response => setAllMsgs(response.data));
       .then(response => findUserMsgs(response.data, loginUser))
       .then(result => {
-              setAllMsgs(result);
-            //  console.log(loginUser,result,'msgeffect')
+        setAllMsgs(result);
+        //  console.log(loginUser,result,'msgeffect')
       })
 
   }, [loginUser]);
 
-  console.log('aftereffect', userData, 'msg',allLoginUserMsgs)
-  
+  console.log('aftereffect', userData, 'msg', allLoginUserMsgs)
+
 
   function findUserdata(objArr, user_name) {
     const user_data = objArr.find(p => p.name === user_name)
@@ -117,17 +117,17 @@ const App = () => {
 
   return (
     <div id='spa'>
+      <Modal is_Login={islogin} set_Is_Longin={setIsLongin} set_User={setLoginUser} />
       <Head login_user={loginUser} />
       <Main />
-      <Modal is_Login={islogin} set_Is_Longin={setIsLongin} set_User={setLoginUser} />
-      <ChatSlider isRetracted={isChatRetracted}
+      {islogin && <ChatSlider isRetracted={isChatRetracted}
         handleToggle={toggleSlider}
         friendslist={friendslist}
         setChatee={setChatee}
         chatee={chatee}
         msgs={msgsBtwnUsers}
         handleSend={handleSendMsg}
-      />
+      />}
       <Footer />
     </div>
   );
