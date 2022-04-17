@@ -3,12 +3,12 @@ import HeadAcct from "./HeadAcct";
 
 
 
-const Head = ({login_user}) => {
+const Head = ({is_Login,login_user}) => {
 
     return (
         <div className="spa-shell-head">
             <HeadLogo />
-            <HeadAcct login_user={login_user}/>
+            <HeadAcct is_Login={is_Login} login_user={login_user}/>
            
         </div>
     )

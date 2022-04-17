@@ -1,6 +1,6 @@
-const HeadAcct = ({ login_user }) => {
-    if (!login_user) {
-        return <div className="spa-shell-head-acct"> Sign In</div>
+const HeadAcct = ({is_Login, login_user }) => {
+    if (is_Login===false) {
+        return <div className="spa-shell-head-acct" onClick={f=>f}>Please Sign In</div>
     }
     return (
         <div className="spa-shell-head-acct"> {login_user}</div>

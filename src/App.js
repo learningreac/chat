@@ -118,7 +118,7 @@ const App = () => {
   return (
     <div id='spa'>
       <Modal is_Login={islogin} set_Is_Longin={setIsLongin} set_User={setLoginUser} />
-      <Head login_user={loginUser} />
+      <Head is_Login={islogin} login_user={loginUser} />
       <Main />
       {islogin && <ChatSlider isRetracted={isChatRetracted}
         handleToggle={toggleSlider}
