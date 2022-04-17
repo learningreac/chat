@@ -6,7 +6,7 @@ const Msgs = ({ chatee, msgs, handleSend}) => {
         <div className="spa-chat-msg">
             <div className="spa-chat-msg-log">
                 {chatee.name && <p>{`Now chat with ${chatee.name}`}</p>}
-                {msgs && msgs.map(obj => <p key={obj.msgID}>{obj.content}</p>)}
+                {msgs && msgs.map(obj => <p key={obj.id}>{obj.content}</p>)}
             </div>
             <ChatBox handleSend={handleSend}/>
         </div>

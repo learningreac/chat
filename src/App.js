@@ -18,7 +18,7 @@ const messagesUrl = " http://localhost:3001/messages";
 const App = () => {
   const [islogin, setIsLongin] = useState(false);
   const [isChatRetracted, setIsChatRetracted] = useState(false); // chatbox
-  const [loginUser, setLoginUser] = useState('Josh'); //user input username
+  const [loginUser, setLoginUser] = useState(null); //user input username
   const [allLoginUserMsgs, setAllMsgs] = useState(null); // initial messages all msg from login user
 
   const [userData, setUserDate] = useState(null);
@@ -38,12 +38,11 @@ const App = () => {
         setChatee(result.friends[0]);
       });
 
-  }, [loginUser]); // render if loginUser changes
-
+  }, [loginUser]); // render every time when loginUser changes
 
 
   useEffect(() => {
-    // console.log('msgeffect',loginUser);
+    console.log('msgeffect', loginUser);
 
     axios
       .get(messagesUrl)
@@ -51,7 +50,7 @@ const App = () => {
       .then(response => findUserMsgs(response.data, loginUser))
       .then(result => {
         setAllMsgs(result);
-        //  console.log(loginUser,result,'msgeffect')
+        console.log('msgeffect',loginUser, result )
       })
 
   }, [loginUser]);
@@ -64,35 +63,23 @@ const App = () => {
     return user_data;
   };
 
-
-
-  const login_user_data = data.persons.find(p => p.name === loginUser);
-  const userid = login_user_data.id;
-  let friendslist = login_user_data.friends;
   let msgsBtwnUsers;
-  if (userid && chatee.id) {
-    msgsBtwnUsers = filtAndSortMsgs(data.messages, userData.id, chatee.id);
+  if (userData && chatee) {
+    msgsBtwnUsers = filtbyChatee(allLoginUserMsgs, chatee.id);
   }
 
 
   function findUserMsgs(objArr, username) {  // !!!!!!!!!!!! should be username 
-
     const result = objArr.filter(msg => msg.creatorName === username || msg.recipientName === username);
     return result;
+  };
 
-  }
-
-  function filtAndSortMsgs(objArr, userID, chateeID) {
-    const result = [];
-    objArr.map(msg => {
-      if (msg.creatorID === userID && msg.recipientID === chateeID) {
-        return result.push(msg);
-      } else if (msg.creatorID === chateeID && msg.recipientID === userID) {
-        result.push(msg);
-      }
-    });
+  function filtbyChatee(MsgobjArr, chateeID) {
+    const result = MsgobjArr.filter(msg => msg.creatorID === chateeID || msg.recipientID === chateeID);
     result.sort((x, y) => Date.parse(x.timestamp) - Date.parse(y.timestamp));
+    console.log("filt&sort", result);
     return result;
+
   };
 
 
@@ -112,10 +99,9 @@ const App = () => {
     newMsgobj.recipientName = chatee.name;
 
     axios
-      .post(messagesUrl,newMsgobj)
+      .post(messagesUrl, newMsgobj)
       .then(response => {
         setAllMsgs(allLoginUserMsgs.concat(response.data))
-       // console.log('post',response)
       })
     //setAllMsgs([...allLoginUserMsgs, newMsgobj])
   };
@@ -127,14 +113,14 @@ const App = () => {
       <Modal is_Login={islogin} set_Is_Longin={setIsLongin} set_User={setLoginUser} />
       <Head is_Login={islogin} login_user={loginUser} />
       <Main />
-      {islogin && <ChatSlider isRetracted={isChatRetracted}
+      {/*islogin && <ChatSlider isRetracted={isChatRetracted}
         handleToggle={toggleSlider}
-        friendslist={friendslist}
+        friendslist={friends}
         setChatee={setChatee}
         chatee={chatee}
         msgs={msgsBtwnUsers}
         handleSend={createNewMsg}
-      />}
+  />*/}
       <Footer />
     </div>
   );
