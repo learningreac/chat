@@ -12,7 +12,7 @@ const ChatBox = ({handleSend}) => {
             timestamp: new Date()
         };
 
-        console.log('new msg', msgObject);
+      //  console.log('new msg', msgObject);
         handleSend(msgObject);
 
         event.target.newMsg.value = "";

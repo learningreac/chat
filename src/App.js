@@ -18,7 +18,7 @@ const messagesUrl = " http://localhost:3001/messages";
 const App = () => {
 
   const [isChatRetracted, setIsChatRetracted] = useState(true); // chatbox
-  const [loginUser, setLoginUser] = useState('Josh'); //name
+  const [loginUser, setLoginUser] = useState('Josh'); //user input username
   const [allLoginUserMsgs, setAllMsgs] = useState(null); // initial messages all msg from login user
 
   const [userData, setUserDate] = useState(null);
@@ -27,7 +27,8 @@ const App = () => {
 
 
   useEffect(() => {
-    //console.log('personeffect');
+   // console.log('personeffect');
+   
     axios
       .get(personsUrl)
       .then(response => findUserdata(response.data, loginUser))
@@ -42,21 +43,23 @@ const App = () => {
  
 
   useEffect(() => {
-    console.log('msgeffect',userData);
+   // console.log('msgeffect',loginUser);
 
     axios
       .get(messagesUrl)
       // .then(response => setAllMsgs(response.data));
-      .then(response => findUserMsgs(response.data, userData.id))
-      .then(result => setAllMsgs(result))
+      .then(response => findUserMsgs(response.data, loginUser))
+      .then(result => {
+              setAllMsgs(result);
+            //  console.log(loginUser,result,'msgeffect')
+      })
 
   }, [loginUser]);
 
- // console.log('aftereffect', userData, 'msg',allLoginUserMsgs, 'chatee', chatee, 'f',friends)
+  console.log('aftereffect', userData, 'msg',allLoginUserMsgs)
   
 
   function findUserdata(objArr, user_name) {
-    console.log('user_name', user_name)
     const user_data = objArr.find(p => p.name === user_name)
     return user_data;
   };
@@ -72,8 +75,9 @@ const App = () => {
   }
 
 
-  function findUserMsgs(objArr, userID) {
-    const result = objArr.filter(msg => msg.creatorID === userID || msg.recipientID === userID);
+  function findUserMsgs(objArr, username) {  // !!!!!!!!!!!! should be username 
+
+    const result = objArr.filter(msg => msg.creatorName === username || msg.recipientName === username);
     return result;
 
   }
@@ -103,7 +107,9 @@ const App = () => {
   const handleSendMsg = (newMsg) => {
     //console.log('sendbtnclicked', allLoginUserMsgs);
     newMsg.creatorID = userData.id;
+    newMsg.creatorName = userData.name;
     newMsg.recipientID = chatee.id;
+    newMsg.recipientName = chatee.name;
     setAllMsgs([...allLoginUserMsgs, newMsg])
   };
 

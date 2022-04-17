@@ -97,35 +97,45 @@
             "id": "ADSFG",
             "content": "hello Betty",
             "creatorID": "56783",
+            "creatorName":"Josh",
             "recipientID": "89657",
+            "recipientName":"Betty",
             "timestamp": "Thu Apr 14 2022 21:55:15 GMT-0700"
         },
         {
             "id": "JHBGY",
             "content": "Hello!",
             "creatorID": "89657",
+            "creatorName":"Betty",
             "recipientID": "56783",
+            "recipientName":"Josh",
             "timestamp": "Thu Apr 14 2022 21:45:15 GMT-0700"
         },
         {
             "id": "GFHJN",
             "content": "Have a great day!",
             "creatorID": "56783",
+            "creatorName":"Josh",
             "recipientID": "89657",
+            "recipientName":"Betty",
             "timestamp": "Thu Apr 14 2022 21:56:15 GMT-0700"
         },
         {
             "id": "BFCGV",
             "content": "You too!",
             "creatorID": "89657",
+            "creatorName":"Betty",
             "recipientID": "56783",
+            "recipientName":"Josh",
             "timestamp": "Thu Apr 14 2022 21:57:15 GMT-0700"
         },
         {
             "id": "FCVGH",
             "content": "Are you there?",
             "creatorID": "56783",
+            "creatorName":"Josh",
             "recipientID": "12458",
+            "recipientName":"Mike",
             "timestamp": "Thu Apr 14 2022 21:53:15 GMT-0700"
         }
     ]
