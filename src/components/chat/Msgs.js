@@ -1,6 +1,7 @@
 import ChatBox from "./ChatBox";
 
-const Msgs = ({ chatee, msgs }) => {
+const Msgs = ({ chatee, msgs, userID }) => {
+    let msgsToShow;
     return (
         <div className="spa-chat-msg">
             <div className="spa-chat-msg-log">
