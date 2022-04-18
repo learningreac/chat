@@ -3,13 +3,11 @@ import './css/spa.css';
 import './css/spa.shell.css';
 import './css/spa.chat.css';
 
-
 import ChatSlider from './components/ChatSlider';
 
-
-import dataService from './services/index';
 import axios from 'axios';
-const personsUrl = "http://localhost:3001/persons";
+import dataService from './services/index';
+
 const messagesUrl = " http://localhost:3001/messages";
 
 const ChatApp = ({ login_user }) => {
@@ -33,8 +31,6 @@ const ChatApp = ({ login_user }) => {
                 setChatee(result.friends[0]);
             });
 
-        console.log('alluser', allUser, 'f', friends);
-
     }, [login_user]); // render every time when loginUser changes
 
 
@@ -45,7 +41,6 @@ const ChatApp = ({ login_user }) => {
             .then(data => findUserMsgs(data, login_user))
             .then(result => {
                 setAllMsgs(result);
-                console.log('msgeffect', login_user, result)
             })
     }, [login_user]);
 
@@ -58,7 +53,7 @@ const ChatApp = ({ login_user }) => {
     };
 
     let msgsBtwnUsers;
-    if (userData && chatee) {
+    if (userData && chatee && allLoginUserMsgs) {
         msgsBtwnUsers = filtbyChatee(allLoginUserMsgs, chatee.id);
     }
 
@@ -71,7 +66,6 @@ const ChatApp = ({ login_user }) => {
     function filtbyChatee(MsgobjArr, chateeID) {
         const result = MsgobjArr.filter(msg => msg.creatorID === chateeID || msg.recipientID === chateeID);
         result.sort((x, y) => Date.parse(x.timestamp) - Date.parse(y.timestamp));
-        console.log("filt&sort", result);
         return result;
     };
 
