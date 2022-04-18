@@ -5,10 +5,7 @@ import './css/spa.chat.css';
 
 import ChatSlider from './components/ChatSlider';
 
-import axios from 'axios';
 import dataService from './services/index';
-
-const messagesUrl = " http://localhost:3001/messages";
 
 const ChatApp = ({ login_user }) => {
 
@@ -102,7 +99,6 @@ const ChatApp = ({ login_user }) => {
                 handleToggle={toggleSlider}
                 friendslist={friends}
                 setChatee={setChatee}
-                chatee={chatee}
                 msgs={msgsBtwnUsers}
                 handleSend={createNewMsg}
             />

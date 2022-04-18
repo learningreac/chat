@@ -1,12 +1,10 @@
 import ChatBox from "./ChatBox";
 
-const Msgs = ({ chatee, msgs, handleSend}) => {
-    let msgsToShow;
+const Msgs = ({ msgs, handleSend}) => {
     return (
         <div className="spa-chat-msg">
-            <div className="spa-chat-msg-log">
-                {chatee.name && <p>{`Now chat with ${chatee.name}`}</p>}
-                {msgs && msgs.map(obj => <p key={obj.id}>{obj.content}</p>)}
+            <div className="spa-chat-msg-log"> 
+                {msgs && msgs.map(obj => <p key={obj.id}>{`${obj.creatorName}: ${obj.content}`}</p>)}
             </div>
             <ChatBox handleSend={handleSend}/>
         </div>
@@ -14,3 +12,5 @@ const Msgs = ({ chatee, msgs, handleSend}) => {
 };
 
 export default Msgs;
+
+// {chatee.name && <p>{`Now chat with ${chatee.name}`}</p>}

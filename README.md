@@ -18,9 +18,22 @@
 - Use the data to render the UI.
 ![friendslist_message_log](public/imgs/Step3_Combine_friends_with_message_log.png?raw=true "friendslist_message_log")
 
+### Step4: Show Msgs log and enable create new message.
+- render messages and update view when user create new message.
+- send messages GET and Post request to json server.
+![fetchMsgs](public/imgs/Step4_1_Get_msgs_between_users.png?raw=true "testMsgsFetchWithConsole")
+![msg_list_create_new](public/imgs/Step5_create_newMsg_and_update_dataServer.png?raw=true "msg_list_create_new")
+
+### Step5: Seperate login form and main chat app.
+- Only fetch user data after "islogin" is true.
+![login_form](public/imgs/Step4_Seperate_Login_and_chat.png?raw=true "login_form")
+
+### Step6: To do: refine the view.
+- Now the basic modal and view of this simple chat app is build.
+
 ### To do 
-- [ ] manipulate data to render messages.
-- [ ] add json server and use Axios for fetching.
+- [x] manipulate data to render messages.
+- [x] add json server and use Axios for fetching.
 - [ ] right now the data and handlers are pass layers by layers, better to use Redux.
 - [ ] the original example in the book is more like a chat room, I want to change it to a Wechat style.
 - [ ] add routes.

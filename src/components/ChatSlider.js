@@ -14,7 +14,7 @@ const getEmSize = function (elem) {
 
 
 
-const ChatSlider = ({ isRetracted, handleToggle, friendslist,setChatee,chatee,msgs,handleSend }) => {
+const ChatSlider = ({ isRetracted, handleToggle, friendslist,setChatee,msgs,handleSend }) => {
 
  // console.log('friendspassed', friendslist);
 
@@ -51,7 +51,7 @@ const ChatSlider = ({ isRetracted, handleToggle, friendslist,setChatee,chatee,ms
     <div className="spa-chat" ref={sliderRef} style={{ height: sliderheight }}>
       <ChatHeader handleToggle={handleToggle} title={title} togglesign={togglesign} />
       <ChatCloser />
-      <Sizer sizerheight={sizerheight} friendslist={friendslist} setChatee={setChatee}chatee={chatee} msgs={msgs} handleSend={handleSend}/>
+      <Sizer sizerheight={sizerheight} friendslist={friendslist} setChatee={setChatee} msgs={msgs} handleSend={handleSend}/>
     </div>
   )
 };

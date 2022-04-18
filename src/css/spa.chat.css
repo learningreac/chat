@@ -181,6 +181,7 @@
     line-height : 1.9em;
     text-align  : center;
     color       : #fff;
+    background-color : #888;
     font-weight : 800;
     cursor      : pointer;
   }

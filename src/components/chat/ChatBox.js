@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const ChatBox = ({handleSend}) => {
 
+    // to do: invalid input, empty input
     const handleSendMsg = (event) => {
         console.log('send btn clicked')
         event.preventDefault();
@@ -12,7 +13,6 @@ const ChatBox = ({handleSend}) => {
             timestamp: new Date()
         };
 
-      //  console.log('new msg', msgObject);
         handleSend(msgObject);
 
         event.target.newMsg.value = "";

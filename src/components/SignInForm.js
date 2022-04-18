@@ -47,8 +47,8 @@ const SignInForm = ({ is_Login, set_Is_Longin, set_User }) => {
     return (
         <div className="login-form">
             <div className="title">Sign In</div>
-
             <RenderForm handleSubmit={handleSubmit} />
+            <p style={{"font-style": "italic"}}>Example: try 'Mike' or 'Betty'</p>
         </div>
     )
 };
