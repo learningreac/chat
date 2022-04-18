@@ -16,7 +16,10 @@ ol,ul,dl { list-style-position : inside;}
 body {
   font: 10pt 'Trebuchet MS', Verdana, Helvetica, Arial, sans-serif;
   color: #444;
-  background-color: #888;
+  /*background-color: #888;*/
+  background-image: url(../../public/imgs/bg.jpg);
+  background-repeat: round;
+
 }
 
 a {
@@ -43,10 +46,10 @@ strong {
 /** Begin spa namespace selectors */
 #spa {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  bottom: 8px;
-  right: 8px;
+  top: 0px;
+  left: 250px;
+  bottom:0px;
+  right:250px;
 
   background: #fff;
   min-height: 15em;
