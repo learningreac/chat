@@ -29,11 +29,14 @@
 ![login_form](public/imgs/Step4_Seperate_Login_and_chat.png?raw=true "login_form")
 
 ### Step6: To do: refine the view.
-- Now the basic modal and view of this simple chat app is build.
+- Now the basic modal and view of this simple chat app is finished.
+- Adding some simple css.
+![final_login_page](public/imgs/Step6_Login_page.png?raw=true "final_login_page")
+![final_chat_app_page](public/imgs/Step6_Chat_page.png?raw=true "final_chat_app_page")
 
 ### To do 
 - [x] manipulate data to render messages.
 - [x] add json server and use Axios for fetching.
-- [ ] right now the data and handlers are pass layers by layers, better to use Redux.
-- [ ] the original example in the book is more like a chat room, I want to change it to a Wechat style.
+- [ ] right now the data and handlers are pass layers by layers, change to Redux.
+- [X] the original example in the book is more like a chat room, change it to a modern style.
 - [ ] add routes.

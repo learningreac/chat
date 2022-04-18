@@ -13,7 +13,7 @@ const App = () => {
   const [islogin, setIsLongin] = useState(false);
   const [loginUser, setLoginUser] = useState(null); //user input username
  
-
+// <Main />
 
   return (
     <div id='spa'>
