@@ -35,7 +35,7 @@ const ChatApp = ({ login_user }) => {
 
 
     useEffect(() => {
-        console.log('msgeffect', login_user);
+      //  console.log('msgeffect', login_user);
         const allMsgs = dataService
             .getAllMsgs()
             .then(data => findUserMsgs(data, login_user))
@@ -44,7 +44,7 @@ const ChatApp = ({ login_user }) => {
             })
     }, [login_user]);
 
-    console.log('aftereffect', userData, 'msg', allLoginUserMsgs)
+  //  console.log('aftereffect', userData, 'msg', allLoginUserMsgs)
 
     //utility functions
     function findUserdata(objArr, user_name) {
@@ -83,11 +83,15 @@ const ChatApp = ({ login_user }) => {
         newMsgobj.recipientID = chatee.id;
         newMsgobj.recipientName = chatee.name;
 
-        axios
+        dataService
+            .createMsg(newMsgobj)
+            .then(returnedMsg => setAllMsgs(allLoginUserMsgs.concat(returnedMsg)))
+       /* axios
             .post(messagesUrl, newMsgobj)
             .then(response => {
                 setAllMsgs(allLoginUserMsgs.concat(response.data))
             })
+        */
     };
 
 
