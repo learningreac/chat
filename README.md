@@ -1,4 +1,8 @@
 # SPA Chat App With React;
+I made this simple Chat app with React. 
+It uses react to manage the state and render the UI. 
+It can fetch and update user data and message data from a json server.
+The app mainly focus on the code logic and modal part, which is simple and clear. right now it does not has much style.
 
 ## How to run 
 
